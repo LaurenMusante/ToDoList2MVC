@@ -20,10 +20,18 @@ namespace ToDoList.Controllers
     }
 
     [HttpPost("/items")]
-    public ActionResult Create(string description)
+    public ActionResult Create(string description) //"Create" is the route here.
     {
        Item myItem = new Item(description);
       return RedirectToAction("Index");
     }
+
+    [HttpPost("/items/delete")]
+    public ActionResult DeleteAll() // here, "DeleteAll" is the route
+    {
+        Item.ClearAll();
+        return View();
+    }
+
 }
 }
